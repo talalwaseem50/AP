@@ -2,7 +2,7 @@
 
 <html>
 <head>
-	<title>Jasper</title>
+	<title>Facile</title>
 	<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
 	<style>
 h1{
@@ -29,7 +29,7 @@ h1{
 			<div class="col-xs-12 col-sm-8 col-sm-offset-2 col-md-6 col-md-offset-3" id="center-div">
 				<div class="row">
 					<div id="form-internal">
-						<h1>AP</h1>
+						<h1>Facile</h1>
 				
 <% 
 if(request.getMethod().equals("POST")) 

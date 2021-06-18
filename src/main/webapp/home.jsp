@@ -33,7 +33,7 @@
 			<!-- Side Bar for showing databases -->
 			<div class="col-xs-2 sidebar">
 				<div class="row">
-					<h1 class="height-70 margin-0" id="jasper">Jasper</h1>
+					<h1 class="height-70 margin-0" id="jasper">Facile</h1>
 					<div class="col-xs-12" id="navigation-list">
 						<div class="row">
 							<a href="home.jsp">
@@ -114,7 +114,7 @@ if(databaseList.size() != 0){
 						</div>
 						<div class="col-xs-12">
 							<div  id="welcome-note">
-								<h3>Welcome to Jasper</h3>
+								<h3>Welcome to Facile</h3>
 								<h5>New Way of handling your Databases</h5>
 							</div>
 						</div>
