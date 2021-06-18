@@ -35,9 +35,13 @@ index and nullable.
 
 3. Downlaod the release package. 
 
-    [Facile]( "Facile")    
+    [Facile](https://github.com/talalwaseem50/AP/releases/download/v1.0/Facile.war "Facile")    
 
-    Paste the downloaded `.war` file in tomcat directory.
+    Paste the downloaded `.war` file in
+
+    ```
+    (Tomcat Home)/webapps/
+    ```
 
 4. Run Tomcat
 
