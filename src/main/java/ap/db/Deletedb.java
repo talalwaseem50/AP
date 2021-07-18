@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ap.helper.ConnectionResult;
-import ap.helper.JasperCookie;
-import ap.helper.JasperDb;
+import ap.helper.FacileCookie;
+import ap.helper.FacileDb;
 
 @WebServlet("/deleteDatabase")
 public class Deletedb extends HttpServlet{
@@ -26,7 +26,7 @@ public class Deletedb extends HttpServlet{
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		
@@ -40,7 +40,7 @@ public class Deletedb extends HttpServlet{
 		
 		String notification = null;
 		
-		JasperDb db = new JasperDb("",uname,pass);
+		FacileDb db = new FacileDb("",uname,pass);
 		ConnectionResult cr = db.getConnectionResult();
 		if(!cr.isError()){
 			String query = "DROP DATABASE `" + dbName + "`";

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import ap.helper.AsciiString;
-import ap.helper.JasperCookie;
-import ap.helper.JasperDb;
+import ap.helper.FacileCookie;
+import ap.helper.FacileDb;
 import ap.helper.QueryResult;
 
 @WebServlet("/updateInTable")
@@ -24,7 +24,7 @@ public class UpdateInTable extends HttpServlet{
     String tname;
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-    	JasperCookie cookies = new JasperCookie(request,response);
+    	FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		tname = request.getParameter("tname");
@@ -45,8 +45,8 @@ public class UpdateInTable extends HttpServlet{
 		pass = cookies.getValue("pass");
 		
 		String notification = null;
-		JasperDb db = new JasperDb("information_schema",uname,pass);
-		JasperDb db1 = new JasperDb(dbName, uname, pass);
+		FacileDb db = new FacileDb("information_schema",uname,pass);
+		FacileDb db1 = new FacileDb(dbName, uname, pass);
 		String query = "";
 		if(db.getConnectionResult().isError())
 		{

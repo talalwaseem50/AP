@@ -2,19 +2,19 @@ package ap.helper;
 
 import java.util.*;
 
-public class JasperDb {
+public class FacileDb {
 	ConnectionResult cr;
-	JasperConnection conn;
-	List<JasperStatement> listJs;
+	FacileConnection conn;
+	List<FacileStatement> listJs;
 	boolean usePrev;
-	JasperStatement stmt;
+	FacileStatement stmt;
 	
-	public JasperDb(String db, String uname, String pass){
-		conn = new JasperConnection(db, uname, pass);
+	public FacileDb(String db, String uname, String pass){
+		conn = new FacileConnection(db, uname, pass);
 		cr = conn.start();
-		listJs = new ArrayList<JasperStatement>();
+		listJs = new ArrayList<FacileStatement>();
 		usePrev = true;
-		stmt = new JasperStatement(conn);
+		stmt = new FacileStatement(conn);
 	}
 	
 	public QueryResult executeQuery(String query){
@@ -23,7 +23,7 @@ public class JasperDb {
 			usePrev = false;
 			return stmt.executeQuery(query);
 		}
-		JasperStatement newStmt = new JasperStatement(conn);
+		FacileStatement newStmt = new FacileStatement(conn);
 		listJs.add(newStmt);
 		return newStmt.executeQuery(query);
 	}
@@ -34,7 +34,7 @@ public class JasperDb {
 			usePrev = false;
 			return stmt.executeUpdate(query);
 		}
-		JasperStatement newStmt = new JasperStatement(conn);
+		FacileStatement newStmt = new FacileStatement(conn);
 		listJs.add(newStmt);
 		return newStmt.executeUpdate(query);
 	}
@@ -54,7 +54,7 @@ public class JasperDb {
 		Iterator itr=listJs.iterator();
 		while(itr.hasNext())
 		{
-			JasperStatement temp = (JasperStatement)itr.next();
+			FacileStatement temp = (FacileStatement)itr.next();
 			temp.close();
 		}
 		conn.close();

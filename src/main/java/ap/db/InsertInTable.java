@@ -37,7 +37,7 @@ public class InsertInTable extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		tname = request.getParameter("table");
@@ -58,8 +58,8 @@ public class InsertInTable extends HttpServlet {
 		pass = cookies.getValue("pass");
 		
 		String notification = null;
-		JasperDb db = new JasperDb("information_schema",uname,pass);
-		JasperDb db1 = new JasperDb(dbName, uname, pass);
+		FacileDb db = new FacileDb("information_schema",uname,pass);
+		FacileDb db1 = new FacileDb(dbName, uname, pass);
 		String query = "INSERT INTO `" + tname + "` VALUES ( ";
 		if(db.getConnectionResult().isError())
 		{

@@ -7,8 +7,8 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.*;
 
 import ap.helper.ConnectionResult;
-import ap.helper.JasperCookie;
-import ap.helper.JasperDb;
+import ap.helper.FacileCookie;
+import ap.helper.FacileDb;
 
 @WebServlet("/editTableStructure")
 public class EditTableStructure extends HttpServlet{
@@ -22,7 +22,7 @@ public class EditTableStructure extends HttpServlet{
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		tname = request.getParameter("table");
@@ -49,7 +49,7 @@ public class EditTableStructure extends HttpServlet{
 		String notification = null;
 		String query = "";
 		
-		JasperDb db = new JasperDb(dbName,uname,pass);
+		FacileDb db = new FacileDb(dbName,uname,pass);
 		ConnectionResult cr = db.getConnectionResult();
 		if(cr.isError())
 		{

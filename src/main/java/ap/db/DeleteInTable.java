@@ -10,8 +10,8 @@ import javax.servlet.http.HttpServletResponse;
 
 import ap.helper.AsciiString;
 import ap.helper.ConnectionResult;
-import ap.helper.JasperCookie;
-import ap.helper.JasperDb;
+import ap.helper.FacileCookie;
+import ap.helper.FacileDb;
 
 @WebServlet("/deleteInTable")
 public class DeleteInTable extends HttpServlet{
@@ -23,7 +23,7 @@ public class DeleteInTable extends HttpServlet{
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		tname = request.getParameter("table");
@@ -51,7 +51,7 @@ public class DeleteInTable extends HttpServlet{
 		String notification = null;
 		String actualData = AsciiString.getStringFromAscii(data);
 		
-		JasperDb db = new JasperDb(dbName,uname,pass);
+		FacileDb db = new FacileDb(dbName,uname,pass);
 		ConnectionResult cr = db.getConnectionResult();
 		if(!cr.isError()){
 			String query = "DELETE FROM `" + tname + "` WHERE " + actualData + " LIMIT 1";

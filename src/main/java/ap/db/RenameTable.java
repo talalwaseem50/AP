@@ -21,7 +21,7 @@ public class RenameTable extends HttpServlet {
 		
 		flag = 0;
 		
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		
 		dbName = request.getParameter("db");
 		new_tname = request.getParameter("table");
@@ -45,7 +45,7 @@ public class RenameTable extends HttpServlet {
 		
 		String notification = null;
 		
-		JasperDb db = new JasperDb(dbName,uname,pass);
+		FacileDb db = new FacileDb(dbName,uname,pass);
 		ConnectionResult cr = db.getConnectionResult();
 		if(!cr.isError()){
 			

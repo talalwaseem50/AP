@@ -6,14 +6,14 @@
 	String uname = null;
 	String pass = null;
 
-	String dbname = null;
-	dbname = request.getParameter("db");
+	String dbName = null;
+	dbName = request.getParameter("db");
 	
-	JasperCookie cookies = new JasperCookie(request,response);
+	FacileCookie cookies = new FacileCookie(request,response);
 	
 	if(!cookies.exists("uname") || !cookies.exists("uname")){
 		response.sendRedirect("index.jsp");
-	}else if(dbname == null || dbname.isEmpty())
+	}else if(dbName == null || dbName.isEmpty())
 		response.sendRedirect("home.jsp");
 	
 	uname = cookies.getValue("uname");
@@ -36,35 +36,7 @@
 			<!-- Side Bar for showing databases -->
 			<div class="col-xs-2 sidebar">
 				<div class="row">
-					<h1 class="height-70 margin-0" id="jasper">Facile</h1>
-					<div class="col-xs-12" id="navigation-list">
-						<div class="row">
-							<a href="home.jsp">
-								<div class="col-xs-6 navigation-widget border-bottom border-right">
-									<div class="row">
-										<div class="col-xs-12 navigation-icon">
-											<span class="glyphicon glyphicon-home"></span>
-										</div>
-										<div class="col-xs-12 navigation-text">
-											Home
-										</div>
-									</div>
-								</div>
-							</a>
-							<a href="logout">
-								<div class="col-xs-6 navigation-widget border-bottom">
-									<div class="row">
-										<div class="col-xs-12 navigation-icon">
-											<span class="glyphicon glyphicon-log-out"></span>
-										</div>
-										<div class="col-xs-12 navigation-text">
-											Logout
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
+					<jsp:include page="header.jsp" />
 					<div class="col-xs-12" id="db-list">
 						<div class="row">
 <%
@@ -76,7 +48,7 @@ if(databaseList.size() != 0){
 	{
 		String data = itr.next();
 %>
-		<a href="table.jsp?db=<% out.print(data); %>" ><h4 class="col-xs-12 height-30 db <% if(data.equals(dbname)) out.print("active"); %>"><% out.print(data); %></h4></a>
+		<a href="table.jsp?db=<% out.print(data); %>" ><h4 class="col-xs-12 height-30 db <% if(data.equals(dbName)) out.print("active"); %>"><% out.print(data); %></h4></a>
 <%
 	}
 }
@@ -128,14 +100,14 @@ if(databaseList.size() != 0){
 							</div>
 						</div>
 <%
-if(dbname != null && !dbname.isEmpty())
+if(dbName != null && !dbName.isEmpty())
 {
-	DataBase db2 = new DataBase(dbname,uname,pass);
+	DataBase db2 = new DataBase(dbName,uname,pass);
 	ArrayList<String> tableList = db2.getTableList();
 	if(tableList.size() == 0)
 	{
-		response.sendRedirect("home.jsp");
-		return;
+		//response.sendRedirect("home.jsp");
+		//return;
 	}
 	else
 	{
@@ -152,7 +124,7 @@ if(dbname != null && !dbname.isEmpty())
 %>
 									<div class ="col-xs-12 table-elem height-50" >
 										<div class="row">
-											<a href="tablecontent.jsp?db=<% out.print(dbname); %>&table=<% out.print(tname); %>">
+											<a href="tablecontent.jsp?db=<% out.print(dbName); %>&table=<% out.print(tname); %>">
 												<div class="col-xs-12 col-sm-8 col-md-10 table-name">
 													<% out.print(tname); %>
 												</div>
@@ -193,7 +165,7 @@ if(dbname != null && !dbname.isEmpty())
 										<div class="modal-body">
 											<div class="form-group">
 												<div class="col-xs-12">
-													<input type="hidden" value="<% out.print(dbname); %>" name="db">
+													<input type="hidden" value="<% out.print(dbName); %>" name="db">
 													<input id="rename-table-name_old" class="col-xs-12" type="hidden"  name="old_table" required>
 													<input id="rename-table-name" class="col-xs-12" type="text" placeholder="New Name" name="table" required>
 												</div>
@@ -219,7 +191,7 @@ if(dbname != null && !dbname.isEmpty())
 										<div class="modal-body">
 											<div class="form-group">
 												<div class="col-xs-12">
-													<input type="hidden" value="<% out.print(dbname); %>" name="db">
+													<input type="hidden" value="<% out.print(dbName); %>" name="db">
 												</div>
 											</div>
 											<div class="form-group">
@@ -373,7 +345,7 @@ if(dbname != null && !dbname.isEmpty())
 								<div class="modal-content">
 									<div class="modal-header">
 										<button type="button" class="close" data-dismiss="modal">&times;</button>
-										<h4 class="modal-title">Delete <b><% out.print(dbname); %></b></h4>
+										<h4 class="modal-title">Delete <b><% out.print(dbName); %></b></h4>
 									</div>
 									<div class="modal-body">
 										<div class="alert alert-warning"><span class="glyphicon glyphicon-warning-sign"></span> &nbsp;This Action cannot be Undone.</div>
@@ -382,7 +354,7 @@ if(dbname != null && !dbname.isEmpty())
 										<form class="form-horizontal" action="deleteDatabase" method="POST">
 											<div class="form-group">
 												<div class="col-xs-12">
-													<input type="hidden" value="<% out.print(dbname); %>" name="db">
+													<input type="hidden" value="<% out.print(dbName); %>" name="db">
 												    <input type="submit" value="Delete" class="btn btn-default btn-lg col-xs-12">
 												</div>
 											</div>
@@ -406,7 +378,7 @@ if(dbname != null && !dbname.isEmpty())
 										<form class="form-horizontal" action="deleteTable" method="POST">
 											<div class="form-group">
 												<div class="col-xs-12">
-													<input type="hidden" value="<% out.print(dbname); %>" name="db">
+													<input type="hidden" value="<% out.print(dbName); %>" name="db">
 													<input type="hidden" name="table" id="deletetable">
 												    <input type="submit" value="Delete" class="btn btn-default btn-lg col-xs-12">
 												</div>
@@ -425,15 +397,15 @@ if(dbname != null && !dbname.isEmpty())
 	<script type="text/javascript">
 	
 	function renamehelp(e) {
-		var tablename = document.getElementById("rename-table-name");
-		tablename.value = e.id;	
-		tablename = document.getElementById("rename-table-name_old");
-		tablename.value = e.id;
+		var tname = document.getElementById("rename-table-name");
+		tname.value = e.id;	
+		tname = document.getElementById("rename-table-name_old");
+		tname.value = e.id;
 	}
 	
 	function deletehelp(e) {
-		var tableName = document.getElementById("delete-table-form-table-name");
-		tableName.innerHTML = e.id;
+		var tname = document.getElementById("delete-table-form-table-name");
+		tname.innerHTML = e.id;
 		var x = document.getElementById("deletetable");
 		x.value = e.id;
 	}

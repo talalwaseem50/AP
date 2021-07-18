@@ -7,7 +7,7 @@
 	String uname = null;
 	String pass = null;
 	
-	JasperCookie cookies = new JasperCookie(request,response);
+	FacileCookie cookies = new FacileCookie(request,response);
 	
 	if(!cookies.exists("uname") || !cookies.exists("uname")){
 		response.sendRedirect("index.jsp");
@@ -20,7 +20,7 @@
 
 <html>
 <head>
-<title>Jasper</title>
+<title>Facile</title>
 <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="css/template.css">
 <script src="js/jquery.min.js"></script>
@@ -33,35 +33,8 @@
 			<!-- Side Bar for showing databases -->
 			<div class="col-xs-2 sidebar">
 				<div class="row">
-					<h1 class="height-70 margin-0" id="jasper">Facile</h1>
-					<div class="col-xs-12" id="navigation-list">
-						<div class="row">
-							<a href="home.jsp">
-								<div class="col-xs-6 navigation-widget border-bottom border-right">
-									<div class="row">
-										<div class="col-xs-12 navigation-icon">
-											<span class="glyphicon glyphicon-home"></span>
-										</div>
-										<div class="col-xs-12 navigation-text">
-											Home
-										</div>
-									</div>
-								</div>
-							</a>
-							<a href="logout">
-								<div class="col-xs-6 navigation-widget border-bottom">
-									<div class="row">
-										<div class="col-xs-12 navigation-icon">
-											<span class="glyphicon glyphicon-log-out"></span>
-										</div>
-										<div class="col-xs-12 navigation-text">
-											Logout
-										</div>
-									</div>
-								</div>
-							</a>
-						</div>
-					</div>
+					
+                                        <jsp:include page="header.jsp" />
 					<div class="col-xs-12" id="db-list">
 						<div class="row">
 <%

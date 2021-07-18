@@ -1,14 +1,14 @@
 package ap.helper;
 import java.sql.*;
 
-public class JasperConnection {
+public class FacileConnection {
 	
 	Connection conn;
 	String db;
 	String uname;
 	String pass;
 	
-	public JasperConnection(String d, String u, String p){
+	public FacileConnection(String d, String u, String p){
 		db = d;
 		uname = u;
 		pass = p;

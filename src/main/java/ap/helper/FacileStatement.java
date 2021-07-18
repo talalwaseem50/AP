@@ -1,9 +1,9 @@
 package ap.helper;
 import java.sql.*;
 
-public class JasperStatement {
+public class FacileStatement {
 	Statement stmt;
-	public JasperStatement(JasperConnection conn){
+	public FacileStatement(FacileConnection conn){
 		try{
 			stmt = conn.getConnection().createStatement();			
 		}catch(Exception e)

@@ -11,14 +11,14 @@ public class DataBase {
 	private String user = "";
 	private String pass = "";
 	
-	private JasperDb db;
+	private FacileDb db;
 	
-	public DataBase(String dbname,String uname,String passwd)
+	public DataBase(String dbName,String uname,String passwd)
 	{
-		database = dbname;
+		database = dbName;
 		user = uname;
 		pass = passwd;
-		db = new JasperDb(database,user,pass);
+		db = new FacileDb(database,user,pass);
 	}
 	
 	public String getErrorMessage()

@@ -11,15 +11,15 @@ public class Table {
 	private String user = "";
 	private String pass = "";
 	
-	private JasperDb db;
+	private FacileDb db;
 	
-	public Table(String dbname,String tname,String uname,String passwd)
+	public Table(String dbName,String tname,String uname,String passwd)
 	{
-		database = dbname;
+		database = dbName;
 		table = tname;
 		user = uname;
 		pass = passwd;
-		db = new JasperDb(database,user,pass);
+		db = new FacileDb(database,user,pass);
 		System.out.println(database+"."+table);
 	}
 	
@@ -38,7 +38,7 @@ public class Table {
 		}
 		else
 		{
-			JasperDb db1 = new JasperDb("information_schema",user,pass); 
+			FacileDb db1 = new FacileDb("information_schema",user,pass); 
 			QueryResult qr = db1.executeQuery("select * from COLUMNS where TABLE_SCHEMA = \""+database+"\" and TABLE_NAME = \""+table+"\"");
 			if(!qr.isError())
 			{

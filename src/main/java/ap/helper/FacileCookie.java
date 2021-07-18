@@ -1,13 +1,13 @@
 package ap.helper;
 import javax.servlet.http.*;
 
-public class JasperCookie {
+public class FacileCookie {
 	
 	Cookie[] cookies;
 	HttpServletRequest request; 
 	HttpServletResponse response;
 	
-	public JasperCookie(HttpServletRequest req, HttpServletResponse res){
+	public FacileCookie(HttpServletRequest req, HttpServletResponse res){
 		request = req;
 		response = res;
 		cookies = req.getCookies();
@@ -20,7 +20,7 @@ public class JasperCookie {
 		{
 			for (int i = 0; i < cookies.length; i++){
 				cookie = cookies[i];
-				if((cookie.getName( )).compareTo(key) == 0 ){
+				if((cookie.getName()).compareTo(key) == 0 ){
 					return true;
 				}
 			}

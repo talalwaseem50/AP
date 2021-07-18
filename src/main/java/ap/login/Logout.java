@@ -14,7 +14,7 @@ public class Logout extends HttpServlet{
 	private static final long serialVersionUID = 1L;
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException{
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		cookies.remove("uname");
 		cookies.remove("pass");
 		response.sendRedirect("index.jsp");

@@ -34,13 +34,13 @@ h1{
 <% 
 if(request.getMethod().equals("POST")) 
 {
-	String uname = request.getParameter("username");
+	String uname = request.getParameter("uname");
 	String pass = request.getParameter("password");
-	JasperDb db = new JasperDb("",uname,pass);
+	FacileDb db = new FacileDb("",uname,pass);
 	ConnectionResult cr = db.getConnectionResult();
 	if(!cr.isError())
 	{
-		JasperCookie cookies = new JasperCookie(request,response);
+		FacileCookie cookies = new FacileCookie(request,response);
 		cookies.add("uname",uname);
 		cookies.add("pass",pass);
 		response.sendRedirect("home.jsp");
@@ -49,7 +49,7 @@ if(request.getMethod().equals("POST"))
 	if(cr.isConnectionError()){
 %>
 
-						<div class="alert alert-danger"> Wrong Username or Password ! </div>
+						<div class="alert alert-danger"> Wrong username or password ! </div>
 			
 <%
 	}
@@ -67,15 +67,15 @@ if(request.getMethod().equals("POST"))
 
 						 <form class="form-horizontal" action="./" method="POST">
 						  <div class="form-group">
-						    <label class="control-label col-sm-2" for="uname" >Username:</label>
+						    <label class="control-label col-sm-2" for="uname" >Username </label>
 						    <div class="col-sm-10">
-						      <input type="text" class="form-control" id="uname" placeholder="Enter username" name="username">
+						      <input type="text" class="form-control" id="uname" placeholder="Enter Username" name="uname">
 						    </div>
 						  </div>
 						  <div class="form-group">
-						    <label class="control-label col-sm-2" for="pwd">Password:</label>
+						    <label class="control-label col-sm-2" for="pwd">Password</label>
 						    <div class="col-sm-10">
-						      <input type="password" class="form-control" id="pwd" placeholder="Enter password" name="password">
+						      <input type="password" class="form-control" id="pwd" placeholder="Enter Password" name="password">
 						    </div>
 						  </div>
 						  <div class="form-group">
