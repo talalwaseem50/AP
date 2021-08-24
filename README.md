@@ -1,4 +1,4 @@
-# AP
+# Facile
 
 Facile is a Graphical User Interface for MySQL server. Following functionalities are implemented in this project:
 * User can login to the database server.
